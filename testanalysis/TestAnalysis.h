@@ -7,6 +7,7 @@ class TGo4CompositeEvent;
 class TGo4EventElement;
 
 class DetEventFull;
+class DetEventCommon;
 class DetEventStation;
 
 class TestAnalysis : public TObject
@@ -24,6 +25,8 @@ private:
 	Short_t fNsubElems;
 
 	TGo4EventElement** fSubElements; //[fNsubElems]
+
+	DetEventCommon* fCommSubEl;
 
 	TGo4CompositeEvent* fRteleSubEl;
 

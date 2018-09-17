@@ -7,6 +7,7 @@ using std::endl;
 #include <TClonesArray.h>
 
 #include "DetEventFull.h"
+#include "DetEventCommon.h"
 #include "DetEventStation.h"
 
 TestAnalysis::TestAnalysis() :
@@ -31,9 +32,18 @@ void TestAnalysis::Init(DetEventFull* curEvent)
 		fSubElements[i] = curEvent->getEventElement(i);
 
 		TString curName = fSubElements[i]->GetName();
+
+		if (curName == "DetEventCommon") {
+			fCommSubEl = (DetEventCommon*)(fSubElements[i]);
+		}
+
 		if (curName == "Right_telescope") {
 			fRteleSubEl = (TGo4CompositeEvent*)(fSubElements[i]);
 		}
+	}
+
+	if (fCommSubEl == NULL || fRteleSubEl == NULL) {
+		cerr << "ERROR" << endl;
 	}
 
 	////Short_t rtNsubsubElems = fRteleSubEl->getNElements();
@@ -61,6 +71,8 @@ void TestAnalysis::ProcessEvent(DetEventFull* curEvent)
 	TClonesArray* tCsI_R_clar = fSubsubEl_tCsI_R->GetDetMessages();
 	TClonesArray* tSQX_R_clar = fSubsubEl_tSQX_R->GetDetMessages();
 	TClonesArray* tSQY_R_clar = fSubsubEl_tSQY_R->GetDetMessages();
+
+	cerr << "trig: " << fCommSubEl->trigger << endl;
 
 	cerr << "CsI_R: " << CsI_R_clar->GetEntries() << endl;
 	cerr << "SQX_R: " << SQX_R_clar->GetEntries() << endl;

@@ -11,7 +11,7 @@
 TTree* GetTheTree(TFile* theFile, TString* treeName);
 
 void test1(TString inFilename="/home/evovch/experimental_data/Ivan/result/h5_14_0001.lmd.root",
-              TString inSetupConfigFilename="/home/evovch/Documents/ACCULINNA_go4_user_library/usr/setup2_exp201804.xml",
+              TString inSetupConfigFilename="/home/evovch/Documents/ACCULINNA_go4_user_library/usr/setup2_exp201804_Ivan.xml",
               UInt_t nEvents = 10)
 {
 	// Construct SetupConfiguration, which includes the input of the XML file
